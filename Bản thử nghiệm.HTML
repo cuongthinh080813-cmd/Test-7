@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Menu 7 Màu FF</title>
+    <style>
+        body {
+            font-family: Arial;
+            background: #0a0a0a;
+            color: white;
+            padding: 20px;
+        }
+        .menu {
+            max-width: 500px;
+            margin: auto;
+            background: #1a1a2e;
+            border-radius: 20px;
+            padding: 30px;
+            box-shadow: 0 0 30px rgba(255,0,0,0.3);
+        }
+        .color-circle {
+            display: inline-block;
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            margin: 5px;
+            cursor: pointer;
+            border: 2px solid white;
+            transition: 0.3s;
+        }
+        .color-circle:hover {
+            transform: scale(1.2);
+        }
+        .slider {
+            width: 100%;
+            margin: 10px 0;
+        }
+        .btn-apply {
+            width: 100%;
+            padding: 15px;
+            background: linear-gradient(45deg, #ff0000, #ff8800, #ffff00, #00ff00, #0088ff, #4b0082, #8a2be2);
+            border: none;
+            color: white;
+            font-size: 20px;
+            font-weight: bold;
+            border-radius: 10px;
+            cursor: pointer;
+            animation: rainbow 3s infinite;
+        }
+        @keyframes rainbow {
+            0% { filter: hue-rotate(0deg); }
+            100% { filter: hue-rotate(360deg); }
+        }
+        .status {
+            text-align: center;
+            margin-top: 20px;
+            color: #00ff00;
+            font-weight: bold;
+        }
+    </style>
+</head>
+<body>
+    <div class="menu">
+        <h1 style="text-align:center;">🌈 7 MÀU NHẸ TÂM</h1>
+        
+        <h3>🔴 Chọn màu vòng ngắm:</h3>
+        <div style="text-align:center;">
+            <span class="color-circle" style="background:#ff0000;" onclick="selectColor('#ff0000')"></span>
+            <span class="color-circle" style="background:#ff8c00;" onclick="selectColor('#ff8c00')"></span>
+            <span class="color-circle" style="background:#ffd700;" onclick="selectColor('#ffd700')"></span>
+            <span class="color-circle" style="background:#00ff00;" onclick="selectColor('#00ff00')"></span>
+            <span class="color-circle" style="background:#1e90ff;" onclick="selectColor('#1e90ff')"></span>
+            <span class="color-circle" style="background:#4b0082;" onclick="selectColor('#4b0082')"></span>
+            <span class="color-circle" style="background:#8a2be2;" onclick="selectColor('#8a2be2')"></span>
+        </div>
+        
+        <h3>⚙️ Độ nhạy aim nhẹ:</h3>
+        <p>Chung: <span id="val1">90</span></p>
+        <input type="range" class="slider" min="50" max="100" value="90" oninput="updateVal('val1', this.value)">
+        
+        <p>Ngắm đỏ: <span id="val2">80</span></p>
+        <input type="range" class="slider" min="50" max="100" value="80" oninput="updateVal('val2', this.value)">
+        
+        <p>2x: <span id="val3">55</span></p>
+        <input type="range" class="slider" min="30" max="80" value="55" oninput="updateVal('val3', this.value)">
+        
+        <p>4x: <span id="val4">30</span></p>
+        <input type="range" class="slider" min="20" max="60" value="30" oninput="updateVal('val4', this.value)">
+        
+        <h3>🧠 Nhẹ tâm 100%</h3>
+        <label><input type="checkbox" checked> Đồ họa Mượt</label><br>
+        <label><input type="checkbox" checked> FPS Cao</label><br>
+        <label><input type="checkbox" checked> Màu Rực rỡ</label><br>
+        <label><input type="checkbox" checked> Âm thanh 70%</label><br>
+        
+        <br>
+        <button class="btn-apply" onclick="apply()">▶️ ÁP DỤNG - TÁC DỤNG 100%</button>
+        <div class="status" id="status">✅ Sẵn sàng</div>
+    </div>
+    
+    <script>
+        function selectColor(color) {
+            document.querySelector('.menu').style.borderColor = color;
+            document.getElementById('status').innerHTML = '✅ Đã chọn màu: ' + color;
+        }
+        
+        function updateVal(id, val) {
+            document.getElementById(id).innerHTML = val;
+        }
+        
+        function apply() {
+            document.getElementById('status').innerHTML = '🔥 ĐÃ ÁP DỤNG - TÁC DỤNG 100% - NHẸ TÂM!';
+            document.getElementById('status').style.color = '#ff0';
+        }
+    </script>
+</body>
+</html>
