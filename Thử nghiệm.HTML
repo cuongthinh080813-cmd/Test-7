@@ -1,0 +1,41 @@
+-- ========================================
+-- Menu "CuongThinh" - Cấu trúc cơ bản
+-- Tác dụng: Điều khiển bật/tắt các tính năng
+-- Lưu ý: Đây chỉ là giao diện, cần có core để hoạt động
+-- ========================================
+
+local menuActive = false
+local aimLockEnabled = false
+
+-- Hàm vẽ menu
+function DrawMenu()
+    if menuActive then
+        -- Tiêu đề Menu
+        DrawText("🔥 MENU CUONGTHINH 🔥", 0.30, 0.20, 0.50, 255, 215, 0, 255)
+        
+        -- Tùy chọn Aim Lock
+        DrawText("[F1] Aim Lock: " .. (aimLockEnabled and "ON" or "OFF"), 0.30, 0.30, 0.40, 255, 255, 255, 255)
+        
+        -- Thêm các tính năng khác tương tự ở đây
+        -- (ESP, Xuyên tường...)
+    end
+end
+
+-- Bắt phím tắt (F10 để mở menu)
+function OnKeyPress(key)
+    if key == 111 then -- F10
+        menuActive = not menuActive
+    end
+    
+    if menuActive then
+        if key == 112 then -- F1
+            aimLockEnabled = not aimLockEnabled
+            -- Gọi hàm bật/tắt Aim ở đây
+        end
+    end
+end
+
+-- Vòng lặp chính (có thể gọi liên tục)
+function OnGameLoop()
+    DrawMenu()
+end
